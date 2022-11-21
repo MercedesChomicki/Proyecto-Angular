@@ -18,6 +18,7 @@ export class ProductListComponent implements OnInit {
     stock: 10,
     image: 'assets/img/pelota-caucho-multicolor.jpg',
     sale: false,
+    quantity: 0,
   },
   {
     name: 'Erizo grande con chifle',
@@ -27,6 +28,7 @@ export class ProductListComponent implements OnInit {
     stock: 5,
     image: 'assets/img/erizo-grande-con-chifle.jpg',
     sale: true,
+    quantity: 0,
   },
   {
     name: 'Pulpos de peluche sin sonido',
@@ -36,6 +38,7 @@ export class ProductListComponent implements OnInit {
     stock: 14,
     image: 'assets/img/pulpos.jpg',
     sale: false,
+    quantity: 0,
   },
   {
     name: 'Frisbee de silicona',
@@ -45,12 +48,35 @@ export class ProductListComponent implements OnInit {
     stock: 0,
     image: 'assets/img/fribee-silicona.jpg',
     sale: false,
+    quantity: 0,
   }
 ]
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  downQuantity(product: Product): void{
+    if(product.quantity > 0){
+      product.quantity--;
+    }
+  }
+
+  upQuantity(product: Product): void{
+    if(product.quantity < product.stock){
+      product.quantity++;
+    }
+  }
+
+  // Tengo que detectar el valor que ingresan en el input y restringir valores mayores al stock de cada producto
+  // 
+
+  validateQuantity(event: Event, product: Product): void{
+    // let input = event.target;
+    // if(input > product.stock) { //No funciona
+    //   event.preventDefault();
+    // }
   }
 
 }

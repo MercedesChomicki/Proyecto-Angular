@@ -5,5 +5,6 @@ export interface Product {
     price: number,
     stock: number,
     image: String,
-    sale: boolean
+    sale: boolean,
+    quantity: number,
 }

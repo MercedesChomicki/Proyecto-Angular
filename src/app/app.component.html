@@ -10,20 +10,19 @@
           <a class="nav-link active" aria-current="page" [routerLink]="['/']">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/']">Productos</a>
+          <a class="nav-link" [routerLink]="['/products']">Productos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/about']">Contacto</a>
+          <a class="nav-link" [routerLink]="['/contact']">Contacto</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="container">
-  <!-- <app-mundo-animal-products></app-mundo-animal-products> -->
+<div class="container-fluid cont">
   <router-outlet></router-outlet>
 </div>
-<footer class="text-center bg-dark">
-  <span class="text-light">{{title}} 2022</span>
+<footer class="text-center bg-dark d-flex justify-content-center">
+  <span class="text-light align-self-center">{{title}} 2022</span>
 </footer>

@@ -6,5 +6,5 @@ export interface Product {
     stock: number,
     image: String,
     sale: boolean,
-    quantity: number,
+    quantity: number;
 }

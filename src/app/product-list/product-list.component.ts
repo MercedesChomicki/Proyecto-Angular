@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductCartService } from '../product-cart.service';
+import { ProductDataService } from '../product-data.service';
 import { Product } from './product';
 
 
@@ -9,74 +11,26 @@ import { Product } from './product';
 })
 export class ProductListComponent implements OnInit {
 
-  products: Product[] = [
-  {
-    name: 'Pelota maciza de colores',
-    type: 'Juguete para perros',
-    description: 'Pelota de caucho maciza indestructible. Multicolor. Mediana. Diámetro: 48mm',
-    price: 300,
-    stock: 10,
-    image: 'assets/img/pelota-caucho-multicolor.jpg',
-    sale: false,
-    quantity: 0,
-  },
-  {
-    name: 'Erizo grande con chifle',
-    type: 'Juguete para perros',
-    description: 'Juguete para perros con sonido con forma de erizo. Excelente diseño. No tóxico.',
-    price: 800,
-    stock: 5,
-    image: 'assets/img/erizo-grande-con-chifle.jpg',
-    sale: true,
-    quantity: 0,
-  },
-  {
-    name: 'Pulpos de peluche sin sonido',
-    type: 'Juguete para perros',
-    description: 'Simpáticos animales de peluche. Varios modelos. Venta por unidad. Origen: China.',
-    price: 1200,
-    stock: 14,
-    image: 'assets/img/pulpos.jpg',
-    sale: false,
-    quantity: 0,
-  },
-  {
-    name: 'Frisbee de silicona',
-    type: 'Juguete para perros',
-    description: 'Frisbee. Divertido juguete para ejercitar con su perro al aire libre. Lanze el plato volador periodicamente a su perro en espacios abiertos, asi mantendrá buen estado físico y entrenará su su coordinación viso-motriz. El frisbee es de silicona y flexible que lo hace resistente a las mordidas de su perro. Tamaño: 22cms',
-    price: 650,
-    stock: 0,
-    image: 'assets/img/fribee-silicona.jpg',
-    sale: false,
-    quantity: 0,
-  }
-]
+  products: Product[] = [];
 
-  constructor() { }
+  constructor(
+    private cart: ProductCartService,
+    private productsDataService: ProductDataService ) {
+  }
 
   ngOnInit(): void {
+    this.productsDataService.getAll()
+    .subscribe(products => this.products = products);
   }
 
-  downQuantity(product: Product): void{
-    if(product.quantity > 0){
-      product.quantity--;
-    }
+  addToCart(product:Product):void {
+    this.cart.addToCart(product);
+    product.stock -= product.quantity;
+    product.quantity = 0; //reinicia a 0
   }
 
-  upQuantity(product: Product): void{
-    if(product.quantity < product.stock){
-      product.quantity++;
-    }
-  }
-
-  // Tengo que detectar el valor que ingresan en el input y restringir valores mayores al stock de cada producto
-  // 
-
-  validateQuantity(event: Event, product: Product): void{
-    // let input = event.target;
-    // if(input > product.stock) { //No funciona
-    //   event.preventDefault();
-    // }
+  maxReached(m: String){
+    alert(m);
   }
 
 }

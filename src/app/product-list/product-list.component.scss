@@ -1,6 +1,22 @@
 h1{
-    color: blue;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 4em;
+    padding: 0.5em 1em;
+    background-color: violet;
+
 }
 .sale{
     background-color: rgba(54, 255, 47, 0.911);
+}
+th{
+    text-align: center;
+}
+.th{
+    padding: 0.7em 2em;
+}
+td{
+    text-align: center;
+}
+.table{
+    margin-bottom: 5em;
 }

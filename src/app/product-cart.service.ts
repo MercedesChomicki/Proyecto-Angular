@@ -10,7 +10,7 @@ import { Product } from './product-list/product';
   providedIn: 'root'
 })
 export class ProductCartService {
-
+  
   private _cartList: Product[] = []; //Observable
   cartList: BehaviorSubject<Product[]> = new BehaviorSubject(this._cartList); //Observer
   
@@ -23,7 +23,7 @@ export class ProductCartService {
     } else {
       item.quantity += product.quantity;
     }
-    console.log(this._cartList);
+    
     this.cartList.next(this._cartList); //equivalente al emit de eventos
   }
 

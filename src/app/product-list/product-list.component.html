@@ -1,31 +1,33 @@
 <h1>Nuestros Productos</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Imagen</th>
-            <th>Nombre</th>
-            <th>Tipo</th>
-            <th>Descripcion</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th class="th">Cantidad</th>
-            <th class="th">Compra</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let product of products" [ngClass]="{sale: product.sale}">
-            <td><img [src]="product.image" [alt]="product.name" class="img-thumbnail"/></td>
-            <td>{{product.name}}</td>
-            <td>{{product.type}}</td>
-            <td>{{product.description}}</td>
-            <td>{{product.price | currency}}</td>
-            <td><span class="badge text-bg-warning" *ngIf="product.stock==0">SIN STOCK</span></td>
-            <td>
-                <app-input-integer [(quantity)]="product.quantity" [max]="product.stock" *ngIf="product.stock" (maxReached)="maxReached($event)"></app-input-integer>
-            </td>
-            <td>
-                <button class="btn btn-primary btn-sm" (click)="addToCart(product)" *ngIf="product.quantity != 0">Agregar al Carrito</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="tabla">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th class="th">Cantidad</th>
+                <th class="th">Compra</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products" [ngClass]="{sale: product.sale}">
+                <td><img [src]="product.image" [alt]="product.name" class="img-thumbnail"/></td>
+                <td>{{product.name}}</td>
+                <td>{{product.type}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.price | currency}}</td>
+                <td><span class="badge text-bg-warning" *ngIf="product.stock==0">SIN STOCK</span></td>
+                <td>
+                    <app-input-integer [(quantity)]="product.quantity" [max]="product.stock" *ngIf="product.stock" (maxReached)="maxReached($event)"></app-input-integer>
+                </td>
+                <td>
+                    <button class="btn btn-primary btn-sm" (click)="addToCart(product)" *ngIf="product.quantity != 0">Agregar al Carrito</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

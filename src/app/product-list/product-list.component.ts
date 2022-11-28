@@ -12,6 +12,7 @@ import { Product } from './product';
 export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
+  productsCart: Product[] = [];
 
   constructor(
     private cart: ProductCartService,

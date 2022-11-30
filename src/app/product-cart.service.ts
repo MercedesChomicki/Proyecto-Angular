@@ -23,8 +23,16 @@ export class ProductCartService {
     } else {
       item.quantity += product.quantity;
     }
-    
     this.cartList.next(this._cartList); //equivalente al emit de eventos
+  }
+
+  removeToCart(product: Product){
+    for (let i = 0; i < this._cartList.length; i++) {
+      if(this._cartList[i].name == product.name){
+        this._cartList.splice(i, product.id);
+      }
+    }
+
   }
 
 }

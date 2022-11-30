@@ -14,9 +14,9 @@ export class ProductDataService {
 
   //consume la API de productos y devuelve un observable a la respuesta.
   public getAll(): Observable<Product[]>{
-    // fetch('url', {method: 'GET'})
     return this.http.get<Product[]>(URL).pipe(
       tap((product: Product[]) => product.forEach(product => product.quantity = 0))  
       );
   }
+
 }

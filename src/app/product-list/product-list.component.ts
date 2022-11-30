@@ -12,7 +12,6 @@ import { Product } from './product';
 export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
-  productsCart: Product[] = [];
 
   constructor(
     private cart: ProductCartService,
@@ -27,7 +26,7 @@ export class ProductListComponent implements OnInit {
   addToCart(product:Product):void {
     this.cart.addToCart(product);
     product.stock -= product.quantity;
-    product.quantity = 0; //reinicia a 0
+    product.quantity = 0;
   }
 
   maxReached(m: String){

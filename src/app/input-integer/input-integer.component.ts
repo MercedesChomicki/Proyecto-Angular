@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Product } from '../product-list/product';
 
 @Component({
   selector: 'app-input-integer',
@@ -19,7 +18,6 @@ export class InputIntegerComponent implements OnInit {
   @Output()
   quantityChange: EventEmitter<number> = new EventEmitter<number>();
 
-  // Evento que vamos a emitir cada vez que el stock alcanzó el máximo:
   @Output()
   maxReached: EventEmitter<String> = new EventEmitter<String>();
 
@@ -42,20 +40,5 @@ export class InputIntegerComponent implements OnInit {
       this.quantityChange.emit(this.quantity);
     }
   }
-
-
-  // Tengo que detectar el valor que ingresan en el input y restringir valores mayores al stock de cada producto
-  // 
-
-  validateQuantity(event: Event): void{
-    // let input = event.target;
-    // if(input > product.stock) { //No funciona
-    //   event.preventDefault();
-    // }
-    this.quantityChange.emit(this.quantity);
-  }
-
-
-
   
 }
